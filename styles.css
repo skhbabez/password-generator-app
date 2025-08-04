@@ -89,6 +89,8 @@ input[type="range"]::-ms-track {
   --font-weight-regular: 700;
   --thumb-radius: 1.75rem;
   --fluid-16-32: clamp(1rem, 0.0458rem + 4.0712vw, 2rem);
+  --fluid-16-24: clamp(1rem, 0.5229rem + 2.0356vw, 1.5rem);
+  --fluid-16-41: clamp(1rem, -0.4909rem + 6.3613vw, 2.5625rem);
   --fluid-343-540: clamp(21.4375rem, 9.6889rem + 50.1272vw, 33.75rem);
 }
 
@@ -155,7 +157,8 @@ fieldset {
 
 .generator form {
   background-color: var(--grey-800);
-  padding: var(--spacing-200);
+  padding: var(--fluid-16-24);
+  padding-block-end: var(--fluid-16-41);
 }
 
 .generator form > * + * {
@@ -242,6 +245,18 @@ input[type="range"]::-ms-thumb {
   font-weight: inherit;
   background-color: var(--green-200);
   margin-block-start: var(--fluid-16-32);
+  outline: none;
+}
+
+.generator form button:is(:hover, :focus-visible) {
+  outline: solid 2px var(--green-200);
+  color: var(--green-200);
+  background-color: transparent;
+  & img {
+    /*https://codepen.io/sosuke/pen/Pjoqqp <-- WOW!*/
+    filter: brightness(0) saturate(100%) invert(85%) sepia(34%) saturate(427%)
+      hue-rotate(68deg) brightness(102%) contrast(102%);
+  }
 }
 
 .strength-container {
