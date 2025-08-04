@@ -202,6 +202,31 @@ input[type="range"]::-ms-thumb {
 .generator form fieldset > * + * {
   margin-block-start: var(--spacing-200);
 }
+.condition-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-300);
+  align-items: center;
+}
+
+.condition-checkbox input {
+  /*https://moderncss.dev/pure-css-custom-checkbox-style/*/
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  margin: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: solid 2px var(--grey-200);
+}
+
+.condition-checkbox input:checked {
+  background-color: var(--green-200);
+  border: none;
+  background-image: url("assets/images/icon-check.svg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
 
 .generator form button {
   border: none;
