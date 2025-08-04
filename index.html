@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Password generator app</title>
+  </head>
+  <body>
+    <main>
+      <article>
+        <h1>Password Generator</h1>
+        <div><p>P4$5W0rD!</p></div>
+        <form>
+          <div>
+            <label for="char-length"> Character Length</label>
+            <input
+              type="range"
+              id="char-length"
+              name="length"
+              min="0"
+              max="32"
+            />
+          </div>
+          <fieldset>
+            <div>
+              <input id="inc-uppercase" type="checkbox" name="conditions" />
+              <label for="inc-uppercase"> Include Uppercase Letters</label>
+            </div>
+            <div>
+              <input id="inc-lowercase" type="checkbox" name="conditions" />
+              <label for="inc-lowercase"> Include Lowercase Letters</label>
+            </div>
+            <div>
+              <input id="check-numbers" type="checkbox" name="conditions" />
+              <label for="check-numbers">Include Numbers</label>
+            </div>
+            <div>
+              <input id="check-symbols" type="checkbox" name="conditions" />
+              <label for="check-symbols"> Include Symbols</label>
+            </div>
+          </fieldset>
+          <div>
+            <p>Strength</p>
+            <p>Medium</p>
+            <div>||||</div>
+            <button type="submit">Generate</button>
+          </div>
+        </form>
+        Generate
+      </article>
+    </main>
+  </body>
+</html>
