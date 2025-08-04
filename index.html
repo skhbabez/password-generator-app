@@ -11,22 +11,32 @@
       href="./assets/images/favicon-32x32.png"
     />
 
+    <link rel="stylesheet" href="styles.css" />
+
     <title>Frontend Mentor | Password generator app</title>
   </head>
   <body>
     <main>
-      <article>
+      <article class="generator">
         <h1>Password Generator</h1>
-        <div><p>P4$5W0rD!</p></div>
+        <div>
+          <p>P4$5W0rD!</p>
+          <img
+            src="assets/images/icon-copy.svg"
+            alt="copy generated password"
+          />
+        </div>
         <form>
           <div>
-            <label for="char-length"> Character Length</label>
+            <label for="char-length">
+              <span>Character Length </span> <span>10</span></label
+            >
             <input
               type="range"
               id="char-length"
               name="length"
-              min="0"
-              max="32"
+              min="1"
+              max="20"
             />
           </div>
           <fieldset>
@@ -51,7 +61,9 @@
             <p>Strength</p>
             <p>Medium</p>
             <div>||||</div>
-            <button type="submit">Generate</button>
+            <button type="submit">
+              Generate <img src="assets/images/icon-arrow-right.svg" />
+            </button>
           </div>
         </form>
         Generate

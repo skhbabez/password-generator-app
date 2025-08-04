@@ -1,0 +1,88 @@
+/* fonts */
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  src: local("JetBrains Mono"),
+    url("assets/fonts/JetBrainsMono-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: italic;
+  src: local("JetBrains Mono"),
+    url("assets/fonts/JetBrainsMono-Italic-VariableFont_wght.ttf")
+      format("truetype");
+}
+
+/* reset */
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-inline-size: 100%;
+  display: block;
+}
+
+/* globals */
+
+:root {
+  --grey-950: #08070b;
+  --grey-900: #14131b;
+  --grey-850: #18171f;
+  --grey-800: #24232c;
+  --grey-700: #54535b;
+  --grey-600: #817d92;
+  --grey-200: #e6e5ea;
+  --green-200: #a4ffaf;
+  --yellow-300: #f8cd65;
+  --orange-400: #fb7c58;
+  --red-500: #f64a4a;
+  --gradient: linear-gradient(#14131b, #08070b);
+  --spacing-100: 0.5rem; /* 8px */
+  --spacing-200: 1rem; /* 16px */
+  --spacing-300: 1.5rem; /* 24px */
+  --spacing-400: 2rem; /* 32px */
+  --spacing-700: 3.5rem; /* 56px */
+  --spacing-1000: 5rem; /* 80px */
+  --spacing-1300: 6.5rem; /* 104px */
+  --spacing-1600: 8rem; /* 128px */
+  --spacing-2000: 10rem; /* 160px */
+  --spacing-2200: 11rem; /* 176px */
+  --spacing-2300: 11.5rem; /* 184px */
+  --font-step-1: 1rem;
+  --font-step-2: 1.125rem;
+  --font-step-3: 1.5rem;
+  --font-step-4: 2rem;
+  --font-base: "JetBrains Mono", sans-serif;
+  --font-weight-regular: 700;
+}
+
+body {
+  min-block-size: 100dvh;
+  background-color: var(--grey-950);
+  color: var(--grey-200);
+  font-family: var(--font-base);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.25;
+  font-size: var(--font-step-1);
+}
+
+h1 {
+  color: var(--grey-600);
+  font-size: var(--font-step-1);
+  text-align: center;
+}
+
+fieldset {
+  border: none;
+}
+
+.generator {
+}
