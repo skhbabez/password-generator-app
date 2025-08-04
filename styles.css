@@ -88,6 +88,7 @@ input[type="range"]::-ms-track {
   --font-base: "JetBrains Mono", sans-serif;
   --font-weight-regular: 700;
   --thumb-radius: 1.75rem;
+  --fluid-16-32: clamp(1rem, 0.0458rem + 4.0712vw, 2rem);
   --fluid-343-540: clamp(21.4375rem, 9.6889rem + 50.1272vw, 33.75rem);
 }
 
@@ -215,7 +216,7 @@ input[type="range"]::-ms-thumb {
   line-height: inherit;
   font-weight: inherit;
   background-color: var(--green-200);
-  margin-block-start: var(--spacing-200);
+  margin-block-start: var(--fluid-16-32);
 }
 
 .strength-container {
