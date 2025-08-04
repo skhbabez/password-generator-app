@@ -19,24 +19,30 @@
     <main>
       <article class="generator">
         <h1>Password Generator</h1>
-        <div>
+        <div class="password-display">
           <p>P4$5W0rD!</p>
-          <img
-            src="assets/images/icon-copy.svg"
-            alt="copy generated password"
-          />
+          <div class="copy-status">
+            <p>copied</p>
+
+            <img
+              src="assets/images/icon-copy.svg"
+              alt="copy generated password"
+            />
+          </div>
         </div>
         <form>
-          <div>
-            <label for="char-length">
-              <span>Character Length </span> <span>10</span></label
-            >
+          <div class="char-length">
+            <div class="char-length-display">
+              <label for="char-length"> Character Length</label>
+              <span class="char-length-indicator">10</span>
+            </div>
             <input
               type="range"
               id="char-length"
               name="length"
               min="1"
               max="20"
+              step="1"
             />
           </div>
           <fieldset>
@@ -57,16 +63,17 @@
               <label for="check-symbols"> Include Symbols</label>
             </div>
           </fieldset>
-          <div>
+          <div class="strength-container">
             <p>Strength</p>
-            <p>Medium</p>
-            <div>||||</div>
-            <button type="submit">
-              Generate <img src="assets/images/icon-arrow-right.svg" />
-            </button>
+            <div class="strength-indicator">
+              <p>Medium</p>
+              <div>||||</div>
+            </div>
           </div>
+          <button type="submit">
+            Generate <img src="assets/images/icon-arrow-right.svg" alt="" />
+          </button>
         </form>
-        Generate
       </article>
     </main>
   </body>
