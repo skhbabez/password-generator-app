@@ -8,6 +8,7 @@ const strengthBars = strengthIndicator.querySelector("[data-strength]");
 const passwordDisplay = document.getElementById("gen-password-label");
 const copyLabel = document.getElementById("copy-status");
 const copyButton = copyLabel.querySelector("button");
+const slider = generator.querySelector("input[type='range']");
 
 const chars = {
   lowercase: "abcdefghijklmnopqrstuvwxyz",
@@ -76,6 +77,18 @@ const updateCopyLabel = (active = false) => {
   copyLabel.classList.toggle("active", active);
 };
 
+function updateSliderProgress(event) {
+  // https://stackoverflow.com/questions/18389224/how-to-style-html5-range-input-to-have-different-color-before-and-after-slider
+  const slider = event.currentTarget;
+  const value = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
+  this.style.background =
+    "linear-gradient(to right, #a4ffaf 0%, #a4ffaf " +
+    value +
+    "%, #18171f " +
+    value +
+    "%, #18171f 100%)";
+}
+
 const handleFormChange = (event) => {
   const { length, conditions } = extractValues(event.currentTarget);
   console.log(conditions);
@@ -105,3 +118,4 @@ const handleCopyClick = () => {
 form.addEventListener("change", handleFormChange);
 form.addEventListener("submit", handleFormSubmit);
 copyButton.addEventListener("click", handleCopyClick);
+slider.addEventListener("input", updateSliderProgress);

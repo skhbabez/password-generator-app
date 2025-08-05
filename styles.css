@@ -187,6 +187,14 @@ fieldset {
   margin-block-start: var(--spacing-400);
 }
 
+input[type="range"]::-ms-thumb {
+  height: var(--thumb-radius);
+  width: var(--thumb-radius);
+  border-radius: 50%;
+  background: var(--grey-200);
+  cursor: pointer;
+}
+
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: var(--thumb-radius);
@@ -194,7 +202,9 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: 50%;
   background: var(--grey-200);
   cursor: pointer;
-  margin-top: -10px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 input[type="range"]::-moz-range-thumb {
@@ -205,26 +215,67 @@ input[type="range"]::-moz-range-thumb {
   cursor: pointer;
 }
 
-input[type="range"]::-ms-thumb {
-  height: var(--thumb-radius);
-  width: var(--thumb-radius);
-  border-radius: 50%;
-  background: var(--grey-200);
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--grey-850);
+  border: 2px solid var(--green-200);
+}
+input[type="range"]:active::-webkit-slider-thumb {
+  background: var(--grey-850);
+  border: 2px solid var(--green-200);
+}
+input[type="range"]:focus::-webkit-slider-thumb {
+  background: var(--grey-850);
+  border: 2px solid var(--green-200);
+}
+input[type="range"]::-moz-range-thumb:hover {
+  background: var(--grey-850);
+  border: 2px solid var(--green-200);
+}
+input[type="range"]:active::-moz-range-thumb {
+  background: var(--grey-850);
+  border: 2px solid var(--green-200);
+}
+input[type="range"]:focus::-moz-range-thumb {
+  background: var(--grey-850);
+  border: 2px solid var(--green-200);
+}
+input[type="range"]::-ms-thumb:hover {
+  background: var(--grey-850);
+  border: 2px solid var(--green-200);
+}
+input[type="range"]:active::-ms-thumb {
+  background: var(--grey-850);
+  border: 2px solid var(--green-200);
+}
+input[type="range"]:focus::-ms-thumb {
+  background: var(--grey-850);
+  border: 2px solid var(--green-200);
+}
+
+input[type="range"] {
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    var(--green-200) 0%,
+    var(--green-200) 50%,
+    var(--grey-850) 50%,
+    var(--grey-850) 100%
+  );
+  height: var(--spacing-100);
   cursor: pointer;
+  margin-block-start: 26px;
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
   width: 100%;
   height: var(--spacing-100);
   cursor: pointer;
-  background: var(--green-200);
 }
 
 input[type="range"]::-moz-range-track {
   width: 100%;
   height: var(--spacing-100);
   cursor: pointer;
-  background: var(--green-200);
 }
 
 input[type="range"]::-ms-track {
@@ -234,10 +285,6 @@ input[type="range"]::-ms-track {
   background: transparent;
   color: transparent;
   border-color: transparent;
-}
-
-input[type="range"] {
-  margin-block-start: 26px;
 }
 
 .char-length-display {
@@ -258,7 +305,6 @@ input[type="range"] {
   display: flex;
   align-items: center;
   gap: var(--spacing-300);
-  align-items: center;
 }
 
 .condition-checkbox input {
@@ -270,6 +316,7 @@ input[type="range"] {
   width: 1.25rem;
   height: 1.25rem;
   border: solid 2px var(--grey-200);
+  cursor: pointer;
 }
 
 .condition-checkbox input:checked {
@@ -295,6 +342,7 @@ input[type="range"] {
   background-color: var(--green-200);
   margin-block-start: var(--fluid-16-32);
   outline: none;
+  cursor: pointer;
 }
 
 .generator form button:is(:hover, :focus-visible) {
