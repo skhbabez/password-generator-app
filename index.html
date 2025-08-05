@@ -12,12 +12,13 @@
     />
 
     <link rel="stylesheet" href="styles.css" />
+    <script defer src="main.js"></script>
 
     <title>Frontend Mentor | Password generator app</title>
   </head>
   <body>
     <main>
-      <article class="generator">
+      <article id="password-generator" class="generator">
         <h1>Password Generator</h1>
         <div class="password-display">
           <p>P4$5W0rD!</p>
@@ -30,11 +31,11 @@
             />
           </div>
         </div>
-        <form>
+        <form novalidate>
           <div class="char-length">
             <div class="char-length-display">
               <label for="char-length"> Character Length</label>
-              <span class="char-length-indicator">10</span>
+              <span id="char-length-indicator">10</span>
             </div>
             <input
               type="range"
@@ -43,31 +44,57 @@
               min="1"
               max="20"
               step="1"
+              value="10"
             />
           </div>
           <fieldset>
             <div class="condition-checkbox">
-              <input id="inc-uppercase" type="checkbox" name="conditions" />
+              <input
+                id="inc-uppercase"
+                type="checkbox"
+                name="conditions"
+                value="uppercase"
+              />
               <label for="inc-uppercase"> Include Uppercase Letters</label>
             </div>
             <div class="condition-checkbox">
-              <input id="inc-lowercase" type="checkbox" name="conditions" />
+              <input
+                id="inc-lowercase"
+                type="checkbox"
+                name="conditions"
+                value="lowercase"
+              />
               <label for="inc-lowercase"> Include Lowercase Letters</label>
             </div>
             <div class="condition-checkbox">
-              <input id="check-numbers" type="checkbox" name="conditions" />
+              <input
+                id="check-numbers"
+                type="checkbox"
+                name="conditions"
+                value="numbers"
+              />
               <label for="check-numbers">Include Numbers</label>
             </div>
             <div class="condition-checkbox">
-              <input id="check-symbols" type="checkbox" name="conditions" />
+              <input
+                id="check-symbols"
+                type="checkbox"
+                name="conditions"
+                value="symbols"
+              />
               <label for="check-symbols"> Include Symbols</label>
             </div>
           </fieldset>
           <div class="strength-container">
             <p>Strength</p>
-            <div class="strength-indicator">
+            <div id="strength-indicator" class="strength-indicator">
               <p>Medium</p>
-              <div>||||</div>
+              <div data-strength="1">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
             </div>
           </div>
           <button type="submit">

@@ -68,7 +68,10 @@ input[type="range"]::-ms-track {
   --green-200: #a4ffaf;
   --yellow-300: #f8cd65;
   --orange-400: #fb7c58;
+  --red-100: #f64a4a;
   --red-500: #f64a4a;
+  --orange-100: #fb7c58;
+  --orange-300: #f8cd65;
   --gradient: linear-gradient(#14131b, #08070b);
   --spacing-100: 0.5rem; /* 8px */
   --spacing-200: 1rem; /* 16px */
@@ -172,7 +175,7 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: 50%;
   background: var(--grey-200);
   cursor: pointer;
-  margin-top: -14px;
+  margin-top: -10px;
 }
 
 input[type="range"]::-moz-range-thumb {
@@ -191,13 +194,40 @@ input[type="range"]::-ms-thumb {
   cursor: pointer;
 }
 
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: var(--spacing-100);
+  cursor: pointer;
+  background: var(--green-200);
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: var(--spacing-100);
+  cursor: pointer;
+  background: var(--green-200);
+}
+
+input[type="range"]::-ms-track {
+  width: 100%;
+  height: var(--spacing-100);
+  cursor: pointer;
+  background: transparent;
+  color: transparent;
+  border-color: transparent;
+}
+
+input[type="range"] {
+  margin-block-start: 26px;
+}
+
 .char-length-display {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.char-length-indicator {
+.char-length-display span {
   color: var(--green-200);
   font-size: var(--font-step-3);
 }
@@ -277,4 +307,38 @@ input[type="range"]::-ms-thumb {
   align-items: center;
   gap: var(--spacing-200);
   font-size: var(--font-step-3);
+}
+
+[data-strength] {
+  display: flex;
+  gap: var(--spacing-100);
+}
+
+[data-strength] * {
+  width: 0.625rem;
+  height: 1.75rem;
+  background-color: var(--bar-color, transparent);
+  border: solid 0.125rem var(--bar-color, var(--grey-200));
+}
+
+[data-strength="0"] {
+  & :nth-child(1) {
+    --bar-color: var(--red-100);
+  }
+}
+
+[data-strength="1"] {
+  & :nth-child(-n + 2) {
+    --bar-color: var(--orange-100);
+  }
+}
+
+[data-strength="2"] {
+  & :nth-child(-n + 3) {
+    --bar-color: var(--orange-300);
+  }
+}
+
+[data-strength="3"] * {
+  --bar-color: var(--green-200);
 }
