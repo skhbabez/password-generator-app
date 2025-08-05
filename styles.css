@@ -95,6 +95,8 @@ input[type="range"]::-ms-track {
   --fluid-16-24: clamp(1rem, 0.5229rem + 2.0356vw, 1.5rem);
   --fluid-16-41: clamp(1rem, -0.4909rem + 6.3613vw, 2.5625rem);
   --fluid-343-540: clamp(21.4375rem, 9.6889rem + 50.1272vw, 33.75rem);
+  --fluid-24-32: clamp(1.5rem, 1.0229rem + 2.0356vw, 2rem);
+  --fluid-64-80: clamp(4rem, 3.0458rem + 4.0712vw, 5rem);
 }
 
 body {
@@ -138,10 +140,11 @@ fieldset {
   align-items: center;
   background-color: var(--grey-800);
   padding: var(--spacing-200);
+  min-block-size: var(--fluid-64-80);
 }
 
 .password-display > p {
-  font-size: var(--font-step-3);
+  font-size: var(--fluid-24-32);
 }
 
 .copy-status {
@@ -149,12 +152,28 @@ fieldset {
   align-items: center;
   justify-content: center;
   gap: var(--spacing-100);
-  color: #a4ffaf;
-
   text-transform: uppercase;
+  & p {
+    display: none;
+  }
   & img {
     width: 17.5px;
     height: 20px;
+    filter: brightness(0) saturate(100%) invert(1);
+  }
+  & button {
+    background-color: transparent;
+    border: none;
+  }
+}
+
+.copy-status.active {
+  color: #a4ffaf;
+  & p {
+    display: inline;
+  }
+  & img {
+    filter: none;
   }
 }
 
