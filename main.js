@@ -18,16 +18,21 @@ const chars = {
   symbols: "‘~!@#$%^&*()-_=+[]{}|;:‘“,<>/?.",
 };
 
-const calculateStrength = (length, conditions) => {
-  if (length < 1 || conditions.length === 0) {
+const calculateStrength = (password = "") => {
+  if (password < 1) {
     return 0;
   }
-  const characterRange = conditions.reduce(
-    (acc, cur) => acc + chars[cur].length,
+  const length = password.length;
+  const characterRange = Object.entries(chars).reduce(
+    (acc, [key, value]) =>
+      acc +
+      (value.split("").some((element) => password.includes(element))
+        ? value.length
+        : 0),
+
     0
   );
   const entropy = length * Math.log2(characterRange);
-  console.log(entropy);
 
   if (entropy < 36) {
     return 1;
@@ -46,7 +51,6 @@ const generatePassword = (length = 1, conditions = []) => {
     return "";
   }
   const selectedChars = conditions.reduce((acc, cur) => acc + chars[cur], "");
-  console.log(selectedChars);
   let password = "";
   for (let i = 0; i < length; i++) {
     password += selectedChars.charAt(
@@ -108,10 +112,7 @@ const handleSliderInput = (event) => {
 
 const handleFormInput = (event) => {
   const { length, conditions } = extractValues(event.currentTarget);
-  console.log(conditions);
   updateLengthIndicator(length);
-  const strength = calculateStrength(length, conditions);
-  updateStrengthDisplay(strength);
   disableSubmitButton(conditions.length === 0 || length < 1);
 };
 
@@ -119,6 +120,8 @@ const handleFormSubmit = (event) => {
   event.preventDefault();
   const { length, conditions } = extractValues(event.currentTarget);
   const password = generatePassword(length, conditions);
+  const strength = calculateStrength(password);
+  updateStrengthDisplay(strength);
   updatePasswordDisplay(password);
   updateCopyLabel(false);
 };
@@ -134,12 +137,14 @@ const handleCopyClick = () => {
 
 const init = () => {
   const length = 10;
-  const conditions = [];
+  const conditions = ["uppercase", "lowercase", "numbers"];
+  const password = generatePassword(length, conditions);
   updateCopyLabel(false);
+  updatePasswordDisplay(password);
   slider.value = length;
   updateLengthIndicator(length);
   updateSliderProgress(length);
-  const strength = calculateStrength(length, conditions);
+  const strength = calculateStrength(password);
   const checkboxes = form.querySelectorAll("input[type='checkbox']");
   checkboxes.forEach((box) => (box.checked = conditions.includes(box.value)));
   updateStrengthDisplay(strength);
