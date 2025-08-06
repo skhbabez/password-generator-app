@@ -123,7 +123,7 @@ const handleCopyClick = () => {
 };
 
 const init = () => {
-  const length = 10;
+  const length = 0;
   const conditions = [];
   const password = generatePassword(length, conditions);
   updateCopyLabel(false);

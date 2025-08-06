@@ -101,6 +101,7 @@ input[type="range"]::-ms-track {
   --fluid-8-16: clamp(0.5rem, 0.0229rem + 2.0356vw, 1rem);
   --fluid-16-18: clamp(1rem, 0.8807rem + 0.5089vw, 1.125rem);
   --fluid-18-24: clamp(1.125rem, 0.7672rem + 1.5267vw, 1.5rem);
+  --fluid-175-21: clamp(1.0938rem, 0.885rem + 0.8906vw, 1.3125rem);
 }
 
 body {
@@ -166,8 +167,7 @@ fieldset {
     display: none;
   }
   & img {
-    width: 17.5px;
-    height: 20px;
+    width: var(--fluid-175-21);
     &:hover {
       filter: brightness(0) saturate(100%) invert(1);
     }
@@ -303,11 +303,11 @@ input[type="range"]::-ms-track {
 
 .char-length-display span {
   color: var(--green-200);
-  font-size: var(--font-step-3);
+  font-size: var(--fluid-24-32);
 }
 
 .generator form fieldset > * + * {
-  margin-block-start: var(--spacing-200);
+  margin-block-start: 14px;
 }
 .condition-checkbox {
   display: flex;
@@ -353,7 +353,7 @@ input[type="range"]::-ms-track {
   outline: none;
   color: var(--grey-800);
   cursor: pointer;
-  &:is(:hover, :focus-visible):not(:disabled) {
+  &:is(:hover, :focus-visible) {
     outline: solid 2px var(--green-200);
     color: var(--green-200);
     background-color: transparent;
