@@ -72,19 +72,14 @@ const updateLengthIndicator = (length) => {
 };
 
 const updateStrengthDisplay = (strength) => {
-  const strengthValues = [
-    "select criteria",
-    "too weak!",
-    "weak",
-    "medium",
-    "strong",
-  ];
+  const strengthValues = ["", "too weak!", "weak", "medium", "strong"];
   strengthBars.dataset.strength = strength;
   strengthLabel.textContent = strengthValues[strength];
 };
 
-const updatePasswordDisplay = (password) => {
-  passwordDisplay.textContent = password;
+const updatePasswordDisplay = (password = "") => {
+  passwordDisplay.classList.toggle("muted", password.length === 0);
+  passwordDisplay.textContent = password || "P4$5W0rD!";
 };
 
 const updateCopyLabel = (active = false) => {
@@ -101,19 +96,11 @@ function updateSliderProgress(sliderValue) {
     value +
     "%, #18171f 100%)";
 }
-const disableSubmitButton = (isDisabled = false) => {
-  submitButton.disabled = isDisabled;
-};
 
 const handleSliderInput = (event) => {
   const sliderValue = event.currentTarget.value;
   updateSliderProgress(sliderValue);
-};
-
-const handleFormInput = (event) => {
-  const { length, conditions } = extractValues(event.currentTarget);
-  updateLengthIndicator(length);
-  disableSubmitButton(conditions.length === 0 || length < 1);
+  updateLengthIndicator(sliderValue);
 };
 
 const handleFormSubmit = (event) => {
@@ -137,7 +124,7 @@ const handleCopyClick = () => {
 
 const init = () => {
   const length = 10;
-  const conditions = ["uppercase", "lowercase", "numbers"];
+  const conditions = [];
   const password = generatePassword(length, conditions);
   updateCopyLabel(false);
   updatePasswordDisplay(password);
@@ -148,11 +135,9 @@ const init = () => {
   const checkboxes = form.querySelectorAll("input[type='checkbox']");
   checkboxes.forEach((box) => (box.checked = conditions.includes(box.value)));
   updateStrengthDisplay(strength);
-  disableSubmitButton(length < 1 || conditions.length === 0);
 };
 
 init();
-form.addEventListener("input", handleFormInput);
 form.addEventListener("submit", handleFormSubmit);
 copyButton.addEventListener("click", handleCopyClick);
 slider.addEventListener("input", handleSliderInput);

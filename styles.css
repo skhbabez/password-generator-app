@@ -144,11 +144,14 @@ fieldset {
   align-items: center;
   background-color: var(--grey-800);
   padding: var(--spacing-200);
-  min-block-size: var(--fluid-64-80);
 }
 
 .password-display > p {
   font-size: var(--fluid-24-32);
+}
+
+.muted {
+  color: var(--grey-700);
 }
 
 .copy-status {
@@ -335,7 +338,8 @@ input[type="range"]::-ms-track {
   border: none;
   display: flex;
   inline-size: 100%;
-  padding: var(--spacing-200);
+  padding: var(--fluid-16-24);
+  font-family: inherit;
   align-items: center;
   justify-content: center;
   gap: var(--spacing-200);
@@ -346,6 +350,7 @@ input[type="range"]::-ms-track {
   background-color: var(--green-200);
   margin-block-start: var(--fluid-16-32);
   outline: none;
+  color: var(--grey-800);
   cursor: pointer;
   &:is(:hover, :focus-visible):not(:disabled) {
     outline: solid 2px var(--green-200);
@@ -355,12 +360,6 @@ input[type="range"]::-ms-track {
       /*https://codepen.io/sosuke/pen/Pjoqqp <-- WOW!*/
       filter: brightness(0) saturate(100%) invert(85%) sepia(34%) saturate(427%)
         hue-rotate(68deg) brightness(102%) contrast(102%);
-    }
-  }
-  &:disabled {
-    opacity: 60%;
-    & img {
-      opacity: 60%;
     }
   }
 }
