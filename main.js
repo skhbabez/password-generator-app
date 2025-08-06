@@ -119,7 +119,9 @@ const copyToClipboard = async (text) => {
 
 const handleCopyClick = () => {
   const password = passwordDisplay.textContent;
-  copyToClipboard(password).then(() => updateCopyLabel(true));
+  if (!passwordDisplay.classList.contains("muted")) {
+    copyToClipboard(password).then(() => updateCopyLabel(true));
+  }
 };
 
 const init = () => {

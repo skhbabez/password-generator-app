@@ -226,39 +226,39 @@ input[type="range"]::-moz-range-thumb {
 
 input[type="range"]::-webkit-slider-thumb:hover {
   background: var(--grey-850);
-  border: 2px solid var(--green-200);
+  border: 0.125rem solid var(--green-200);
 }
 input[type="range"]:active::-webkit-slider-thumb {
   background: var(--grey-850);
-  border: 2px solid var(--green-200);
+  border: 0.125rem solid var(--green-200);
 }
 input[type="range"]:focus::-webkit-slider-thumb {
   background: var(--grey-850);
-  border: 2px solid var(--green-200);
+  border: 0.125rem solid var(--green-200);
 }
 input[type="range"]::-moz-range-thumb:hover {
   background: var(--grey-850);
-  border: 2px solid var(--green-200);
+  border: 0.125rem solid var(--green-200);
 }
 input[type="range"]:active::-moz-range-thumb {
   background: var(--grey-850);
-  border: 2px solid var(--green-200);
+  border: 0.125rem solid var(--green-200);
 }
 input[type="range"]:focus::-moz-range-thumb {
   background: var(--grey-850);
-  border: 2px solid var(--green-200);
+  border: 0.125rem solid var(--green-200);
 }
 input[type="range"]::-ms-thumb:hover {
   background: var(--grey-850);
-  border: 2px solid var(--green-200);
+  border: 0.125rem solid var(--green-200);
 }
 input[type="range"]:active::-ms-thumb {
   background: var(--grey-850);
-  border: 2px solid var(--green-200);
+  border: 0.125rem solid var(--green-200);
 }
 input[type="range"]:focus::-ms-thumb {
   background: var(--grey-850);
-  border: 2px solid var(--green-200);
+  border: 0.125rem solid var(--green-200);
 }
 
 input[type="range"] {
@@ -272,7 +272,7 @@ input[type="range"] {
   );
   height: var(--spacing-100);
   cursor: pointer;
-  margin-block-start: calc(10px + var(--fluid-8-16));
+  margin-block-start: calc(0.625rem + var(--fluid-8-16));
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
@@ -308,7 +308,7 @@ input[type="range"]::-ms-track {
 }
 
 .generator form fieldset > * + * {
-  margin-block-start: 14px;
+  margin-block-start: 0.875rem;
 }
 .condition-checkbox {
   display: flex;
@@ -324,7 +324,7 @@ input[type="range"]::-ms-track {
   margin: 0;
   width: 1.25rem;
   height: 1.25rem;
-  border: solid 2px var(--grey-200);
+  border: solid 0.125rem var(--grey-200);
   cursor: pointer;
 }
 
@@ -355,7 +355,7 @@ input[type="range"]::-ms-track {
   color: var(--grey-800);
   cursor: pointer;
   &:is(:hover, :focus-visible) {
-    outline: solid 2px var(--green-200);
+    outline: solid 0.125rem var(--green-200);
     color: var(--green-200);
     background-color: transparent;
     & img {
