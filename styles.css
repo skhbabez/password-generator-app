@@ -343,16 +343,21 @@ input[type="range"]::-ms-track {
   margin-block-start: var(--fluid-16-32);
   outline: none;
   cursor: pointer;
-}
-
-.generator form button:is(:hover, :focus-visible) {
-  outline: solid 2px var(--green-200);
-  color: var(--green-200);
-  background-color: transparent;
-  & img {
-    /*https://codepen.io/sosuke/pen/Pjoqqp <-- WOW!*/
-    filter: brightness(0) saturate(100%) invert(85%) sepia(34%) saturate(427%)
-      hue-rotate(68deg) brightness(102%) contrast(102%);
+  &:is(:hover, :focus-visible):not(:disabled) {
+    outline: solid 2px var(--green-200);
+    color: var(--green-200);
+    background-color: transparent;
+    & img {
+      /*https://codepen.io/sosuke/pen/Pjoqqp <-- WOW!*/
+      filter: brightness(0) saturate(100%) invert(85%) sepia(34%) saturate(427%)
+        hue-rotate(68deg) brightness(102%) contrast(102%);
+    }
+  }
+  &:disabled {
+    opacity: 60%;
+    & img {
+      opacity: 60%;
+    }
   }
 }
 
@@ -388,24 +393,24 @@ input[type="range"]::-ms-track {
   border: solid 0.125rem var(--bar-color, var(--grey-200));
 }
 
-[data-strength="0"] {
+[data-strength="1"] {
   & :nth-child(1) {
     --bar-color: var(--red-100);
   }
 }
 
-[data-strength="1"] {
+[data-strength="2"] {
   & :nth-child(-n + 2) {
     --bar-color: var(--orange-100);
   }
 }
 
-[data-strength="2"] {
+[data-strength="3"] {
   & :nth-child(-n + 3) {
     --bar-color: var(--orange-300);
   }
 }
 
-[data-strength="3"] * {
+[data-strength="4"] * {
   --bar-color: var(--green-200);
 }

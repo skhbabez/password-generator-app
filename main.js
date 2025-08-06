@@ -9,6 +9,7 @@ const passwordDisplay = document.getElementById("gen-password-label");
 const copyLabel = document.getElementById("copy-status");
 const copyButton = copyLabel.querySelector("button");
 const slider = generator.querySelector("input[type='range']");
+const submitButton = form.querySelector("button[type='submit']");
 
 const chars = {
   lowercase: "abcdefghijklmnopqrstuvwxyz",
@@ -18,6 +19,9 @@ const chars = {
 };
 
 const calculateStrength = (length, conditions) => {
+  if (length < 1 || conditions.length === 0) {
+    return 0;
+  }
   const characterRange = conditions.reduce(
     (acc, cur) => acc + chars[cur].length,
     0
@@ -26,15 +30,15 @@ const calculateStrength = (length, conditions) => {
   console.log(entropy);
 
   if (entropy < 36) {
-    return 0;
-  }
-  if (entropy < 60) {
     return 1;
   }
-  if (entropy < 120) {
+  if (entropy < 60) {
     return 2;
   }
-  return 3;
+  if (entropy < 120) {
+    return 3;
+  }
+  return 4;
 };
 
 const generatePassword = (length = 1, conditions = []) => {
@@ -64,7 +68,13 @@ const updateLengthIndicator = (length) => {
 };
 
 const updateStrengthDisplay = (strength) => {
-  const strengthValues = ["too weak!", "weak", "medium", "strong"];
+  const strengthValues = [
+    "select criteria",
+    "too weak!",
+    "weak",
+    "medium",
+    "strong",
+  ];
   strengthBars.dataset.strength = strength;
   strengthLabel.textContent = strengthValues[strength];
 };
@@ -77,24 +87,32 @@ const updateCopyLabel = (active = false) => {
   copyLabel.classList.toggle("active", active);
 };
 
-function updateSliderProgress(event) {
+function updateSliderProgress(sliderValue) {
   // https://stackoverflow.com/questions/18389224/how-to-style-html5-range-input-to-have-different-color-before-and-after-slider
-  const slider = event.currentTarget;
-  const value = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
-  this.style.background =
+  const value = ((sliderValue - slider.min) / (slider.max - slider.min)) * 100;
+  slider.style.background =
     "linear-gradient(to right, #a4ffaf 0%, #a4ffaf " +
     value +
     "%, #18171f " +
     value +
     "%, #18171f 100%)";
 }
+const disableSubmitButton = (isDisabled = false) => {
+  submitButton.disabled = isDisabled;
+};
 
-const handleFormChange = (event) => {
+const handleSliderInput = (event) => {
+  const sliderValue = event.currentTarget.value;
+  updateSliderProgress(sliderValue);
+};
+
+const handleFormInput = (event) => {
   const { length, conditions } = extractValues(event.currentTarget);
   console.log(conditions);
   updateLengthIndicator(length);
   const strength = calculateStrength(length, conditions);
   updateStrengthDisplay(strength);
+  disableSubmitButton(conditions.length === 0 || length < 1);
 };
 
 const handleFormSubmit = (event) => {
@@ -107,15 +125,29 @@ const handleFormSubmit = (event) => {
 
 const copyToClipboard = async (text) => {
   await navigator.clipboard.writeText(text);
-  updateCopyLabel(true);
 };
 
 const handleCopyClick = () => {
   const password = passwordDisplay.textContent;
-  copyToClipboard(password);
+  copyToClipboard(password).then(() => updateCopyLabel(true));
 };
 
-form.addEventListener("change", handleFormChange);
+const init = () => {
+  const length = 10;
+  const conditions = [];
+  updateCopyLabel(false);
+  slider.value = length;
+  updateLengthIndicator(length);
+  updateSliderProgress(length);
+  const strength = calculateStrength(length, conditions);
+  const checkboxes = form.querySelectorAll("input[type='checkbox']");
+  checkboxes.forEach((box) => (box.checked = conditions.includes(box.value)));
+  updateStrengthDisplay(strength);
+  disableSubmitButton(length < 1 || conditions.length === 0);
+};
+
+init();
+form.addEventListener("input", handleFormInput);
 form.addEventListener("submit", handleFormSubmit);
 copyButton.addEventListener("click", handleCopyClick);
-slider.addEventListener("input", updateSliderProgress);
+slider.addEventListener("input", handleSliderInput);
