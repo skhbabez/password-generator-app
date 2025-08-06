@@ -193,7 +193,7 @@ fieldset {
 }
 
 .generator form > * + * {
-  margin-block-start: var(--spacing-400);
+  margin-block-start: var(--fluid-16-32);
 }
 
 input[type="range"]::-ms-thumb {
