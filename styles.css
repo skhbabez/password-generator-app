@@ -144,6 +144,7 @@ fieldset {
   align-items: center;
   background-color: var(--grey-800);
   padding: var(--spacing-200);
+  padding-inline: var(--fluid-16-32);
 }
 
 .password-display > p {
