@@ -72,7 +72,7 @@ const updateLengthIndicator = (length) => {
 };
 
 const updateStrengthDisplay = (strength) => {
-  const strengthValues = ["", "too weak!", "weak", "medium", "strong"];
+  const strengthValues = ["\u00A0", "too weak!", "weak", "medium", "strong"];
   strengthBars.dataset.strength = strength;
   strengthLabel.textContent = strengthValues[strength];
 };
