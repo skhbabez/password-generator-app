@@ -97,6 +97,10 @@ input[type="range"]::-ms-track {
   --fluid-343-540: clamp(21.4375rem, 9.6889rem + 50.1272vw, 33.75rem);
   --fluid-24-32: clamp(1.5rem, 1.0229rem + 2.0356vw, 2rem);
   --fluid-64-80: clamp(4rem, 3.0458rem + 4.0712vw, 5rem);
+  --fluid-14-24: clamp(0.875rem, 0.2786rem + 2.5445vw, 1.5rem);
+  --fluid-8-16: clamp(0.5rem, 0.0229rem + 2.0356vw, 1rem);
+  --fluid-16-18: clamp(1rem, 0.8807rem + 0.5089vw, 1.125rem);
+  --fluid-18-24: clamp(1.125rem, 0.7672rem + 1.5267vw, 1.5rem);
 }
 
 body {
@@ -106,7 +110,7 @@ body {
   font-family: var(--font-base);
   font-weight: var(--font-weight-regular);
   line-height: 1.25;
-  font-size: var(--font-step-1);
+  font-size: var(--fluid-16-18);
 }
 
 main {
@@ -118,7 +122,7 @@ main {
 
 h1 {
   color: var(--grey-600);
-  font-size: var(--font-step-1);
+  font-size: var(--fluid-16-24);
   text-align: center;
 }
 
@@ -131,7 +135,7 @@ fieldset {
 }
 
 .generator > * + * {
-  margin-block-start: var(--spacing-200);
+  margin-block-start: var(--fluid-16-24);
 }
 
 .password-display {
@@ -153,13 +157,16 @@ fieldset {
   justify-content: center;
   gap: var(--spacing-100);
   text-transform: uppercase;
+  color: #a4ffaf;
   & p {
     display: none;
   }
   & img {
     width: 17.5px;
     height: 20px;
-    filter: brightness(0) saturate(100%) invert(1);
+    &:hover {
+      filter: brightness(0) saturate(100%) invert(1);
+    }
   }
   & button {
     background-color: transparent;
@@ -168,18 +175,15 @@ fieldset {
 }
 
 .copy-status.active {
-  color: #a4ffaf;
   & p {
     display: inline;
-  }
-  & img {
-    filter: none;
   }
 }
 
 .generator form {
   background-color: var(--grey-800);
   padding: var(--fluid-16-24);
+  padding-inline: var(--fluid-16-32);
   padding-block-end: var(--fluid-16-41);
 }
 
@@ -263,7 +267,7 @@ input[type="range"] {
   );
   height: var(--spacing-100);
   cursor: pointer;
-  margin-block-start: 26px;
+  margin-block-start: calc(10px + var(--fluid-8-16));
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
@@ -336,7 +340,7 @@ input[type="range"]::-ms-track {
   justify-content: center;
   gap: var(--spacing-200);
   text-transform: uppercase;
-  font-size: var(--font-step-1);
+  font-size: inherit;
   line-height: inherit;
   font-weight: inherit;
   background-color: var(--green-200);
@@ -367,7 +371,8 @@ input[type="range"]::-ms-track {
   align-items: center;
   justify-content: space-between;
   background-color: var(--grey-850);
-  padding: var(--spacing-200);
+  padding-inline: var(--fluid-16-32);
+  padding-block: var(--fluid-14-24);
 }
 
 .strength-container > p {
@@ -378,7 +383,7 @@ input[type="range"]::-ms-track {
   display: flex;
   align-items: center;
   gap: var(--spacing-200);
-  font-size: var(--font-step-3);
+  font-size: var(--fluid-18-24);
 }
 
 [data-strength] {
