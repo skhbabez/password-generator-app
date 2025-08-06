@@ -343,7 +343,7 @@ input[type="range"]::-ms-track {
   font-family: inherit;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-200);
+  gap: var(--fluid-16-24);
   text-transform: uppercase;
   font-size: inherit;
   line-height: inherit;
