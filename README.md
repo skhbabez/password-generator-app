@@ -28,12 +28,14 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./screenshots/mobile.jpeg)
+![](./screenshots/tablet.jpeg)
+![](./screenshots/desktop.jpeg)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://github.com/skhbabez/password-generator-app](https://github.com/skhbabez/password-generator-app)
+- Live Site URL: [https://skhbabez.github.io/password-generator-app/](https://skhbabez.github.io/password-generator-app/)
 
 ## My process
 
@@ -47,11 +49,57 @@ Users should be able to:
 
 ### What I learned
 
+Styling Sliders was surprisingly challenging due to all the diffrent browser specific selectors. It took me a while to get it working on edge, firefox and chrome. Especially coloring only the left side of the slider required a javascript solution in the end. Luckily, stackoverflow exists.
+
+```js
+function updateSliderProgress(sliderValue) {
+  const value = ((sliderValue - slider.min) / (slider.max - slider.min)) * 100;
+  slider.style.background =
+    "linear-gradient(to right, #a4ffaf 0%, #a4ffaf " +
+    value +
+    "%, #18171f " +
+    value +
+    "%, #18171f 100%)";
+}
+```
+
+Styling the checkboxes was also surprisingly difficult, as there aren´t that many ways to style them directly. I learned to use appearance property to hide and restyle them entirely.
+
+```css
+.condition-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-300);
+}
+
+.condition-checkbox input {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  margin: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: solid 0.125rem var(--grey-200);
+  cursor: pointer;
+}
+
+.condition-checkbox input:checked {
+  background-color: var(--green-200);
+  border: none;
+  background-image: url("assets/images/icon-check.svg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+```
+
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+I should continue working on my workflow. I applied a mobile first approach but especially the spacings required a lot of backtracking. I will try to define global responsive spacings and fonts earlier so i do not have to set them retroactively.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [styling-cross-browser-compatible-range-inputs-css](https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/) - This helped me to style the range input across browsers.
+- [pure-css-custom-checkbox-style](https://moderncss.dev/pure-css-custom-checkbox-style/) - This showed me a modern approach to create custom styled checkboxes.
+- [CSS filter generator to convert from black to target hex color](https://codepen.io/sosuke/pen/Pjoqqp) - Amazing tool to create filters to color an svg in any color you want.
+- [Stackoverflow slider discussion](https://stackoverflow.com/questions/18389224/how-to-style-html5-range-input-to-have-different-color-before-and-after-slider) - Some really good ideas how to style the lower part of a slider based on its value.
+- [Utopia](https://utopia.fyi/) - Great tool i used a lot to create my clamp functions for responsive spacings and font sizes
