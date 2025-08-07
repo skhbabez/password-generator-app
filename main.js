@@ -60,13 +60,6 @@ const generatePassword = (length = 1, conditions = []) => {
   return password;
 };
 
-const extractValues = (form) => {
-  const formData = new FormData(form);
-  const length = formData.get("length");
-  const conditions = formData.getAll("conditions");
-  return { length, conditions };
-};
-
 const updateLengthIndicator = (length) => {
   lengthIndicator.textContent = length;
 };
@@ -105,7 +98,9 @@ const handleSliderInput = (event) => {
 
 const handleFormSubmit = (event) => {
   event.preventDefault();
-  const { length, conditions } = extractValues(event.currentTarget);
+  const formData = new FormData(form);
+  const length = formData.get("length");
+  const conditions = formData.getAll("conditions");
   const password = generatePassword(length, conditions);
   const strength = calculateStrength(password);
   updateStrengthDisplay(strength);
