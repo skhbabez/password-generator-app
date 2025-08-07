@@ -103,3 +103,4 @@ I should continue working on my workflow. I applied a mobile first approach but 
 - [CSS filter generator to convert from black to target hex color](https://codepen.io/sosuke/pen/Pjoqqp) - Amazing tool to create filters to color an svg in any color you want.
 - [Stackoverflow slider discussion](https://stackoverflow.com/questions/18389224/how-to-style-html5-range-input-to-have-different-color-before-and-after-slider) - Some really good ideas how to style the lower part of a slider based on its value.
 - [Utopia](https://utopia.fyi/) - Great tool i used a lot to create my clamp functions for responsive spacings and font sizes
+- [Password entropy](https://nordvpn.com/de/blog/what-is-password-entropy/#:~:text=You%20can%20calculate%20password%20entropy,password%20entropy%2C%20measured%20in%20bits.) - How to calculate password entropy
