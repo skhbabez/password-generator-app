@@ -150,6 +150,7 @@ fieldset {
 
 .password-display > p {
   font-size: var(--fluid-24-32);
+  word-break: break-all;
 }
 
 .muted {
@@ -169,6 +170,7 @@ fieldset {
   }
   & img {
     width: var(--fluid-175-21);
+    min-width: 1.09375;
     &:hover {
       filter: brightness(0) saturate(100%) invert(1);
     }
