@@ -75,8 +75,15 @@ const updatePasswordDisplay = (password = "") => {
   passwordDisplay.textContent = password || "P4$5W0rD!";
 };
 
-const updateCopyLabel = (active = false) => {
-  copyLabel.classList.toggle("active", active);
+const showCopyLabel = () => {
+  copyLabel.classList.add("active");
+  setTimeout(() => {
+    copyLabel.classList.remove("active");
+  }, 1500);
+};
+
+const hideCopyLabel = () => {
+  copyLabel.classList.remove("active");
 };
 
 function updateSliderProgress(sliderValue) {
@@ -109,7 +116,7 @@ const handleFormSubmit = (event) => {
   const strength = calculateStrength(password);
   updateStrengthDisplay(strength);
   updatePasswordDisplay(password);
-  updateCopyLabel(false);
+  hideCopyLabel();
 };
 
 const handleFormInput = () => {
@@ -126,7 +133,7 @@ const copyToClipboard = async (text) => {
 const handleCopyClick = () => {
   const password = passwordDisplay.textContent;
   if (!passwordDisplay.classList.contains("muted")) {
-    copyToClipboard(password).then(() => updateCopyLabel(true));
+    copyToClipboard(password).then(() => showCopyLabel());
   }
 };
 
@@ -135,7 +142,6 @@ const init = () => {
   const conditions = [];
   disableSubmitButton(length, conditions);
   const password = generatePassword(length, conditions);
-  updateCopyLabel(false);
   updatePasswordDisplay(password);
   slider.value = length;
   updateLengthIndicator(length);
