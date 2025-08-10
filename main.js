@@ -151,4 +151,3 @@ init();
 form.addEventListener("submit", handleFormSubmit);
 form.addEventListener("input", handleFormInput);
 copyButton.addEventListener("click", handleCopyClick);
-// slider.addEventListener("input", handleSliderInput);
