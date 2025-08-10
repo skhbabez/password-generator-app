@@ -90,22 +90,33 @@ function updateSliderProgress(sliderValue) {
     "%, #18171f 100%)";
 }
 
-const handleSliderInput = (event) => {
-  const sliderValue = event.currentTarget.value;
-  updateSliderProgress(sliderValue);
-  updateLengthIndicator(sliderValue);
+const extractValues = () => {
+  const formData = new FormData(form);
+  return {
+    length: formData.get("length"),
+    conditions: formData.getAll("conditions"),
+  };
+};
+
+const disableSubmitButton = (length, conditions) => {
+  submitButton.disabled = conditions.length === 0 || length < 1;
 };
 
 const handleFormSubmit = (event) => {
   event.preventDefault();
-  const formData = new FormData(form);
-  const length = formData.get("length");
-  const conditions = formData.getAll("conditions");
+  const { length, conditions } = extractValues();
   const password = generatePassword(length, conditions);
   const strength = calculateStrength(password);
   updateStrengthDisplay(strength);
   updatePasswordDisplay(password);
   updateCopyLabel(false);
+};
+
+const handleFormInput = () => {
+  const { length, conditions } = extractValues();
+  updateSliderProgress(length);
+  updateLengthIndicator(length);
+  disableSubmitButton(length, conditions);
 };
 
 const copyToClipboard = async (text) => {
@@ -122,6 +133,7 @@ const handleCopyClick = () => {
 const init = () => {
   const length = 0;
   const conditions = [];
+  disableSubmitButton(length, conditions);
   const password = generatePassword(length, conditions);
   updateCopyLabel(false);
   updatePasswordDisplay(password);
@@ -135,6 +147,8 @@ const init = () => {
 };
 
 init();
+
 form.addEventListener("submit", handleFormSubmit);
+form.addEventListener("input", handleFormInput);
 copyButton.addEventListener("click", handleCopyClick);
-slider.addEventListener("input", handleSliderInput);
+// slider.addEventListener("input", handleSliderInput);

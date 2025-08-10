@@ -356,7 +356,7 @@ input[type="range"]::-ms-track {
   outline: none;
   color: var(--grey-800);
   cursor: pointer;
-  &:is(:hover, :focus-visible) {
+  &:is(:hover, :focus-visible):not(:disabled) {
     outline: solid 0.125rem var(--green-200);
     color: var(--green-200);
     background-color: transparent;
@@ -365,6 +365,9 @@ input[type="range"]::-ms-track {
       filter: brightness(0) saturate(100%) invert(85%) sepia(34%) saturate(427%)
         hue-rotate(68deg) brightness(102%) contrast(102%);
     }
+  }
+  &:disabled {
+    opacity: 50%;
   }
 }
 
